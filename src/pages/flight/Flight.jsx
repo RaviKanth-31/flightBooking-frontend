@@ -10,7 +10,8 @@ import Reserve from "../../components/reserve/Reserve";
 
 const Flight = () => {
   const location = useLocation();
-  const id = location.pathname.split("/")[2];
+    const path = location.pathname.split("/");
+  const id = path[path.length-1];
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
