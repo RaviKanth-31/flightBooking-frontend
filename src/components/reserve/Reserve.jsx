@@ -7,7 +7,7 @@ import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { AuthContext } from "../../context/AuthContext";
 const Reserve = ({ setOpen, flightId }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
   const { data, loading, error } = useFetch(`/flights/seats/${flightId}`);
@@ -30,13 +30,15 @@ const Reserve = ({ setOpen, flightId }) => {
     );
   };
   const navigate = useNavigate();
-
+  const { user } = useContext(AuthContext);
   const handleClick = async () => {
     try {
       await Promise.all(
         selectedSeats.map((seatId) => {
           const res = axios.put(`/seats/availability/${seatId}`);
           axios.put(`/flights/reduce/${flightId}`)
+          axios.post(`/users/bookings/${user._id}`, { flightId, seatId })
+          alert("Ticket Booked")
           return res.data;
         })
       );

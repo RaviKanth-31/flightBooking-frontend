@@ -8,6 +8,7 @@ import Flight from "./pages/flight/Flight";
 import List from "./pages/list/List";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/register";
+import Admin from "./pages/admin/Admin";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/flight/:id" element={<Flight/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/admindashboard" element={<Admin/>}/>
       </Routes>
     </BrowserRouter>
   );

@@ -9,6 +9,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-right: 50px;
 }
 
 .lInput{
@@ -19,7 +20,7 @@
 .lButton {
   border: none;
   padding: 10px 20px;
-  background-color: #0071c2;
+  background-color: #2a323a;
   color: white;
   font-weight: bold;
   cursor: pointer;

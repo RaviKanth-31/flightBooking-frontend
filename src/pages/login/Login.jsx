@@ -9,7 +9,10 @@ const Login = () => {
     username: undefined,
     password: undefined,
   });
-
+  const [adminCredentials, setAdminCredentials] = useState({
+    username: undefined,
+    password: undefined
+  })
   const { loading, error, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate()
@@ -18,18 +21,23 @@ const Login = () => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+
   const handleClick = async (e) => {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
       const res = await axios.post("/auth/login", credentials);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      navigate("/")
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+      if(res.data.isAdmin){
+        
+        navigate("/admindashboard")
+      }else{
+        navigate("/")
+      }
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
-
 
   return (
     <div className="login">
@@ -51,10 +59,10 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
+        
         {error && <span>{error.message}</span>}
       </div>
-    </div>
-
+</div>
     );
 };
 
