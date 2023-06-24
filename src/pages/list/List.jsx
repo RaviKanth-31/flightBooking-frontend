@@ -13,7 +13,7 @@ const List = () => {
   const [selectedDate, setSelectedDate] = useState(location.state.selectedDate);
 
   const { data, loading, error, reFetch } = useFetch(
-    `/flights/search?arrivalCity=${arrival}&departureCity=${destination}`
+    `https://flightbooking-backend.onrender.com/flights/search?arrivalCity=${arrival}&departureCity=${destination}`
   );
 
 
