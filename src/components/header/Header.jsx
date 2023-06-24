@@ -27,8 +27,11 @@ const Header = ({ type }) => {
   const { user } = useContext(AuthContext);
 
 
-  const { dispatch } = useContext(SearchContext);
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+  };
 
+  const { dispatch } = useContext(SearchContext);
   const handleSearch = () => {
     dispatch({ type: "NEW_SEARCH", payload: { destination, arrival, selectedDate } });
     console.log(selectedDate);
@@ -53,13 +56,11 @@ const Header = ({ type }) => {
         {type !== "list" && (
           <>
             <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
+              Fly with ease.
             </h1>
             <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free FlyEasy account
+            Book. Fly. Explore.
             </p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faPlane} className="headerIcon" />
@@ -67,7 +68,7 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="From"
                   className="headerSearchInput"
-                  onChange={(e) => setArrival(e.target.value)}
+                  onChange={(e) => setArrival(capitalizeFirstLetter(e.target.value))}
                 />
               </div>
               <div className="headerSearchItem">
@@ -85,7 +86,7 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="To"
                   className="headerSearchInput"
-                  onChange={(e) => setDestination(e.target.value)}
+                  onChange={(e) => setDestination(capitalizeFirstLetter(e.target.value))}
                 />
               </div>
               <div className="headerSearchItem">

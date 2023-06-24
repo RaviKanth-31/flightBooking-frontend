@@ -84,10 +84,10 @@ const Flight = () => {
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">
                 <h1 className="hotelTitle">{data.airline}</h1>
-                {/* <p className="hotelDesc">{data.desc}</p> */}
+                <p className="hotelDesc">Seats Available: {data.available}</p>
               </div>
                 <h2>
-                  <b>${data.price}</b>
+                  <b>₹{data.price}</b>
                 </h2>
                 <button className="bookNow" onClick={handleClick}>Reserve or Book Now!</button>
               </div>

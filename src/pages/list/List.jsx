@@ -17,9 +17,12 @@ const List = () => {
   );
 
 
-  data.map((item)=>{
-    console.log(item.available);
-  })
+
+// Sort the flights array based on availability in ascending order
+data.sort((a, b) => a.availabile - b.availabile);
+
+console.log(data);
+  
   return (
     <div>
       <Navbar />
@@ -31,7 +34,7 @@ const List = () => {
             ) : (
               <>
                 {data.map((item) => (
-                  item.available && <SearchItem item={item} key={item._id} />
+                  <SearchItem item={item} key={item._id} />
                 ))}
               </>
             )}
