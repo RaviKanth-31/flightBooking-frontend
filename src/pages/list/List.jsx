@@ -11,7 +11,9 @@ const List = () => {
   const [destination, setDestination] = useState(location.state.destination);
   const [arrival, setArrival] = useState(location.state.arrival);
   const [selectedDate, setSelectedDate] = useState(location.state.selectedDate);
-
+  const path = location.pathname.split("/");
+  const id = path[path.length-1];
+    console.log(path, id);
   const { data, loading, error, reFetch } = useFetch(
     `https://flightbooking-backend.onrender.com/flights/search?arrivalCity=${arrival}&departureCity=${destination}`
   );
