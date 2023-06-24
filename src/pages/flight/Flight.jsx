@@ -15,7 +15,7 @@ const Flight = () => {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  const { data, loading, error } = useFetch(`/flights/find/${id}`);
+  const { data, loading, error } = useFetch(`https://flightbooking-backend.onrender.com/flights/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
