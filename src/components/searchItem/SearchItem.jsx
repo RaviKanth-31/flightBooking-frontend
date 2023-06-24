@@ -26,7 +26,7 @@ const SearchItem = ({ item }) => {
         <div className="siDetailTexts">
           
           <span className="siPrice">₹{item.price}</span>
-          <Link to={`https://flightbooking-backend.onrender.com/flights/find/${item._id}`}>
+          <Link to={`https://flyeasy31.netlify.app/flight/${item._id}`}>
            <button className="siCheckButton"
            disabled={!item.available}
            >See availability</button>
