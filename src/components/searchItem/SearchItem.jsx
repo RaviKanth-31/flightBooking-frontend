@@ -26,7 +26,7 @@ const SearchItem = ({ item }) => {
         <div className="siDetailTexts">
           
           <span className="siPrice">₹{item.price}</span>
-          <Link to={`/flight/${item._id}`}>
+          <Link to={`https://flightbooking-backend.onrender.com/flight/${item._id}`}>
            <button className="siCheckButton"
            disabled={!item.available}
            >See availability</button>
