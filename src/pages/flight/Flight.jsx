@@ -12,6 +12,7 @@ const Flight = () => {
   const location = useLocation();
     const path = location.pathname.split("/");
   const id = path[path.length-1];
+    console.log(path, id)
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
@@ -19,26 +20,6 @@ const Flight = () => {
   const { data, loading, error } = useFetch(`https://flightbooking-backend.onrender.com/flights/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const { date } = useContext(SearchContext);
-  const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
-  const handleOpen = (i) => {
-    setSlideNumber(i);
-    setOpen(true);
-  };
-
-  const handleMove = (direction) => {
-    let newSlideNumber;
-
-    if (direction === "l") {
-      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
-    } else {
-      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
-    }
-
-    setSlideNumber(newSlideNumber);
-  };
-
   const handleClick = () => {
     if (user) {
       setOpenModal(true);
