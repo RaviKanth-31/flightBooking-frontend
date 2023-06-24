@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 const Reserve = ({ setOpen, flightId }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const { data, loading, error } = useFetch(`/flights/seats/${flightId}`);
+  const { data, loading, error } = useFetch(`https://flightbooking-backend.onrender.com/flights/seats/${flightId}`);
   const { date } = useContext(SearchContext);
 
 
@@ -35,9 +35,9 @@ const Reserve = ({ setOpen, flightId }) => {
     try {
       await Promise.all(
         selectedSeats.map((seatId) => {
-          const res = axios.put(`/seats/availability/${seatId}`);
-          axios.put(`/flights/reduce/${flightId}`)
-          axios.post(`/users/bookings/${user._id}`, { flightId, seatId })
+          const res = axios.put(`https://flightbooking-backend.onrender.com/seats/availability/${seatId}`);
+          axios.put(`https://flightbooking-backend.onrender.com/flights/reduce/${flightId}`)
+          axios.post(`https://flightbooking-backend.onrender.com/users/bookings/${user._id}`, { flightId, seatId })
           alert("Ticket Booked")
           return res.data;
         })
